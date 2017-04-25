@@ -1,8 +1,9 @@
 'use strict'
 
 export default class Node {
-  construct(data) {
+  constructor(data) {
     this.data = data
+    this.previous = null
     this.next = null
    }
 
@@ -12,7 +13,7 @@ export default class Node {
 
   setNext(newNext) { 
     this.next = newNext
-    return this
+    return [this.data, this.next.data]
     }
     
   getNext() {

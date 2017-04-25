@@ -7,9 +7,9 @@
 - [x] Unit tests exist for all methods of `Node`.
 - [ ] A working implementation of the `Linked List` data structure is complete.
 - [ ] Unit tests exist for all methods of `Linked List`.
-- [ ] A working implementation of the `Stack` data structure is complete.
 
 ### Day 2
+- [ ] A working implementation of the `Stack` data structure is complete.
 - [ ] Unit tests exist for all methods of `Stack`.
 - [ ] A working implementation of the `Queue` data structure is complete.
 - [ ] Unit tests exist for all methods of `Queue`.

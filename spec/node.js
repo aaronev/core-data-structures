@@ -11,22 +11,23 @@ describe('Node', () => {
   })
   context('getData()', () => {
     it('returns the data ("apple") of the node.', () => {
-      const nodeA = new Node({data: "apple"})
-      expect(() => node.getData().to.eqaul('apple'))
+      const nodeA = new Node("apple")
+      expect(nodeA.getData()).to.equal('apple')
     })
   })
   context('setNext()', () => {
-    it('returns the data ("apple") of the node.', () => {
-      const nodeA = new Node({data: "apple"})
-      const nodeB = new Node({data: "banana"})
-      expect(() => nodeA.setNext(nodeB).to.eqaul('apple', 'banana'))
+    it('changes the references to the next node and returns the original node.', () => {
+      const nodeA = new Node("apple")
+      const nodeB = new Node("banana")
+      expect(nodeA.setNext(nodeB)).to.deep.equal(['apple', 'banana'])
     })
   })
   context('getNext()', () => {
-    it('returns the data ("apple") of the node.', () => {
-      const nodeA = new Node({data: "apple"})
-      const nodeB = new Node({data: "banana"})
-      expect(() => nodeA.setNext(nodeB).to.eqaul('apple', 'banana'))
+    it('returns the next node.', () => {
+      const nodeA = new Node("apple")
+      const nodeB = new Node("banana")
+      nodeA.setNext(nodeB)
+      expect(nodeA.getNext()).to.equal(nodeB)
     })
   })
 })
