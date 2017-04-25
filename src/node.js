@@ -1,21 +1,12 @@
-'use strict'
-
 export default class Node {
   construct(data) {
     this.data = data
+    this.previous = null
     this.next = null
    }
-
-  getData() {
-    return this.data
-   }
-
-  setNext(newNext) { 
-    this.next = newNext
-    return this
-    }
-    
-  getNext() {
-    return this.next
-  }
+  setNext(newNext) {this.next = newNext}
+  setPrev(lastNode) {this.previous = lastNode}
+  getData() {return this.data}
+  getNext() {return this.next}
+  getPrev() {return this.previous}
 }
