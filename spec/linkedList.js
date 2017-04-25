@@ -5,7 +5,7 @@ import Node from '../src/node'
 
 chai.use(chaiChange)
 
-describe.only('LinkedList', () => {
+describe('LinkedList', () => {
   'use strict'
   it('exists', () => {
     expect(LinkedList).to.be.a('function')
@@ -131,4 +131,3 @@ describe.only('LinkedList', () => {
 // linkedList.insertAfter("apples", "bananas")  // Inserts a node (with data "bananas") after the first node containing "apples"
 // linkedList.remove()                // Removes the tail node from the list
 // linkedList.removeFirst()           // Removes the head node from the list
-
