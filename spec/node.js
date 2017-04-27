@@ -19,7 +19,7 @@ describe('Node', () => {
     it('changes the references to the next node and returns the original node.', () => {
       const nodeA = new Node("apple")
       const nodeB = new Node("banana")
-      expect(nodeA.setNext(nodeB)).to.deep.equal(['apple', 'banana'])
+      expect(nodeA.setNext(nodeB)).to.deep.equal(nodeA)
     })
   })
   context('getNext()', () => {

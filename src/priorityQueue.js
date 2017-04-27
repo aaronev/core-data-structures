@@ -11,6 +11,7 @@ export default class PriorityQueue {
   length() {return this.size}
   front() {return this.highest}
   back() {return this.lowest}
+
   enqueue(data, priority) {
     let newPNode = new PriorityNode(data, priority)
      this.size++
@@ -44,7 +45,6 @@ export default class PriorityQueue {
   }
 
   }
-
 
   dequeue() {
     if(this.highest) {
