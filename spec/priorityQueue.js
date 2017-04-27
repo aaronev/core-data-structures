@@ -5,7 +5,7 @@ import PriorityQueue from '../src/priorityQueue'
 
 chai.use(chaiChange)
 
-describe.only('priorityQueue', () => {
+describe('priorityQueue', () => {
   'use strict'
   it('exists', () => {
     expect(PriorityQueue).to.be.a('function')
