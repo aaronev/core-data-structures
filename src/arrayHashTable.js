@@ -20,7 +20,6 @@ export default class HashTable {
       ?this.table[key].push(value)
       :this.table[key] = [value]
   }
-
   put(aKey, value) {
     const hashKey = sha256(aKey)
     if (this.contains(hashKey)) {
