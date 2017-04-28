@@ -1,5 +1,5 @@
 import sha256 from 'sha256'
-
+import LinkedList from "./linkedList"
 export default class HashTable {
 
   constructor(){
@@ -7,16 +7,25 @@ export default class HashTable {
   }
 
   put(aKey, value) {
-    const hashKey = this.hash(aKey)
-    this.contains(hashKey)
-      ? this.table[hashKey].push(value)
-      : this.table[hashKey] = [value]; // This isn't triggering
-    return this
+    const hashKey = sha256(aKey)
+    console.log('before', value)
+    console.log(this.contains(hashKey))
+    if (this.contains(hashKey)) {
+      console.log('exist', value)
+      console.log(this.table)
+      this.table[hashKey].insert(value)
+      return this
+    } else {
+      console.log('doesnt exist', value)
+      console.log(this.table)
+      this.table[hashKey] = new LinkedList().insert(value)
+      return this
+    }
   }
 
   get(key) {return this.table[this.hash(key)]}
 
-  contains(key) {return this.table[this.hash(key)] ? true : false}
+  contains(key) {return this.table[sha256(key)] ? true : false}
 
   remove(key){return this.table[this.hash(key)] = null}
 

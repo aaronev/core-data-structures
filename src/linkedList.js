@@ -7,7 +7,6 @@ export default class LinkedList {
     this.tail = null
     this.length =  0
    }
-
   getHeadNode() { return this.head }
   getTailNode() { return this.tail }
   contains(item) { return this.find(item).data === item ? true : false}
