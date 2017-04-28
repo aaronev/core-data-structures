@@ -7,14 +7,12 @@ export default class DoublyLinkedList {
     this.tail = null
     this.length =  0
    }
-
   getHeadNode() { return this.head }
   getTailNode() { return this.tail }
   contains(item) { return this.find(item).data === item ? true : false}
   size() { return this.length }
   isEmpty() { return this.length === 0 ? true : false }
   clear() {return this.head = null, this.tail = null, this.length = 0}
-
   find(item) {
     let currentNode = this.head
     while (currentNode) {
@@ -115,7 +113,6 @@ export default class DoublyLinkedList {
     this.length--
     this.tail = this.tail.previous
   }
-
   removeFirst() {
     this.length--
     this.head = this.head.next
