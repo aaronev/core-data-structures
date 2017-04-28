@@ -1,12 +1,13 @@
-import Node from './node'
+import Node from './doubleNode'
 'use strict'
 
-export default class LinkedList {
+export default class DoublyLinkedList {
   constructor() {
     this.head = null
     this.tail = null
     this.length =  0
    }
+
   getHeadNode() { return this.head }
   getTailNode() { return this.tail }
   contains(item) { return this.find(item).data === item ? true : false}
@@ -25,6 +26,17 @@ export default class LinkedList {
     }
     return -1
   }
+  findBackwards(item) {
+    let currentNode = this.tail
+    while (currentNode) {
+      if(currentNode.getData() === item) {
+        return currentNode
+      } else {
+        currentNode = currentNode.previous
+      }
+    }
+    return -1
+  }
   insert(data) {
     let node = new Node( data )
     if (this.head === null) {
@@ -32,8 +44,10 @@ export default class LinkedList {
       this.tail = this.head
     } else if ( this.head === this.tail ){
       this.head.setNext( node )
+      node.setPrevious(this.head)
       this.tail = node
     } else {
+      node.setPrevious(this.tail)
       this.tail.setNext(node)
       this.tail = node
     }
@@ -55,7 +69,8 @@ export default class LinkedList {
     let beforeNode = new Node(bNode)
     let node = new Node(data)
     if (this.head.data === beforeNode.data) {
-      node.setNext(this.head)
+      this.head.previous = node
+      node.next = this.head
       this.head = node
       return this
     } else {
@@ -63,6 +78,7 @@ export default class LinkedList {
       while (currentNode) {
         if (currentNode.next.data === beforeNode.data) {
           currentNode.setNext(node)
+          node.previous = currentNode
           node.setNext(beforeNode)
           return this
         } else {
@@ -76,16 +92,19 @@ export default class LinkedList {
     let afterNode = new Node(nodeA)
     let node = new Node(data)
     if (this.head.data === afterNode.data) {
-      node.setNext(this.head.next)
-      this.head.setNext(node)
+      node.next = this.head.next
+      node.previous = this.head
+      this.head.next = node
+      node.next.previous = node
       return this
     } else {
       let currentNode = this.head
       while (currentNode) {
         if (currentNode.next.data === afterNode.data) {
           node.next = currentNode.next.next
+          currentNode.next.next.previous = node
+          node.previous = currentNode.next
           currentNode.next.next = node
-          return this
         } else {
           currentNode = currentNode.next
         }
@@ -94,21 +113,9 @@ export default class LinkedList {
   }
   remove() {
     this.length--
-    let currentNode = this.head
-    if (this.head.data === this.tail.data) {
-      return this.clear()
-    } else {
-      while (currentNode) {
-        if (currentNode.next.data === this.tail.data) {
-          currentNode.next = null
-          this.tail = currentNode
-          return this
-        } else {
-          currentNode = currentNode.next
-        }
-      }
-    }
+    this.tail = this.tail.previous
   }
+
   removeFirst() {
     this.length--
     this.head = this.head.next

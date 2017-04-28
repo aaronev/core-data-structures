@@ -35,8 +35,8 @@
 
 ### Stretch
 - [x] Start Advance Data Structures
-- [x] Implemeneted HashTable with all test passing
-- [x] PriorityQueue using arrays
+- [x] Implemeneted HashTable
+- [x] Implementing PriorityQueue but using arrays in PriorityQueue2 file
 
 ## Resources
 
